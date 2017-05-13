@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Gpio.h"
 
-TEST( testLed, tooglingGpio_GpiosetsUP ) {
+TEST( testLed, togglingGpio_GpiosetsUP ) {
 	Gpio led2(Port::A,7);
 	GPIOA->BSRR=1<<(7+16); //set pin down manually
 	EXPECT_EQ(led2.getState(),false);
@@ -10,7 +10,7 @@ TEST( testLed, tooglingGpio_GpiosetsUP ) {
 	EXPECT_EQ(static_cast<bool>(GPIOA->ODR&1<<7),true);
 }
 
-TEST( testLed, tooglingGpioFormUp_LedToogles ) {
+TEST( testLed, togglingGpioFormUp_LedToogles ) {
 	Gpio led2(Port::A,7);  //set pin up manually
 	GPIOA->BSRR=1<<7;
 	EXPECT_EQ(led2.getState(),true);
